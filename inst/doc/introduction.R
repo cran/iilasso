@@ -11,7 +11,7 @@ b <- matrix(c(1,0,-1,0,0,0,0,0,0,0), ncol=1)
 y <- as.numeric(X %*% b + rnorm(10, mean=0, sd=0.1))
 
 ## ------------------------------------------------------------------------
-cv_fit <- cv_lasso(X, y, delta=0.1)
+cv_fit <- cv_lasso(X, y, delta=0.1, seed=0)
 fit <- cv_fit$fit
 fit$beta[, cv_fit$lambda.min.index]
 fit$beta[, cv_fit$lambda.1se.index]

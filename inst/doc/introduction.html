@@ -135,7 +135,7 @@ y &lt;- as.numeric(X %*% b + rnorm(10, mean=0, sd=0.1))</code></pre>
 <div id="modeling" class="section level2">
 <h2>Modeling</h2>
 <p>We then model by IILasso with cross validation.</p>
-<pre class="r"><code>cv_fit &lt;- cv_lasso(X, y, delta=0.1)
+<pre class="r"><code>cv_fit &lt;- cv_lasso(X, y, delta=0.1, seed=0)
 fit &lt;- cv_fit$fit
 fit$beta[, cv_fit$lambda.min.index]</code></pre>
 <pre><code>##  [1]  0.943851959  0.011549660 -0.987093401  0.000000000  0.000000000

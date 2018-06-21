@@ -5,8 +5,7 @@
 \title{Fit a model using a design matrix with cross validation}
 \usage{
 cv_lasso(X, y, nfolds = 10, lambda.min.ratio = 1e-04, nlambda = 100,
-  lambda = NULL, foldid = NULL, unit = "sample", seed = 0, cl = NULL,
-  ...)
+  lambda = NULL, foldid = NULL, unit = "sample", seed, cl, ...)
 }
 \arguments{
 \item{X}{matrix of explanatory variables}

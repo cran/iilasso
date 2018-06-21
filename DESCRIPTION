@@ -1,8 +1,8 @@
 Package: iilasso
 Type: Package
 Title: Independently Interpretable Lasso
-Version: 0.0.1
-Date: 2018-04-16
+Version: 0.0.2
+Date: 2018-06-21
 Author: Masaaki Takada
 Maintainer: Masaaki Takada <tkdmah@gmail.com>
 Description: 
@@ -17,6 +17,6 @@ Suggests: testthat, knitr, rmarkdown, MASS, parallel
 VignetteBuilder: knitr
 URL: http://proceedings.mlr.press/v84/takada18a/takada18a.pdf
 NeedsCompilation: yes
-Packaged: 2018-04-15 15:13:14 UTC; takada
+Packaged: 2018-06-21 14:13:32 UTC; takada
 Repository: CRAN
-Date/Publication: 2018-04-16 11:31:06 UTC
+Date/Publication: 2018-06-21 16:52:35 UTC

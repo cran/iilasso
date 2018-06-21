@@ -166,7 +166,7 @@ NumericMatrix covCdaC(NumericMatrix Gamma, NumericVector gamma, NumericVector la
             }
           }
           g = (1 + delta * prod) * lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));
@@ -200,7 +200,7 @@ NumericMatrix covCdaC(NumericMatrix Gamma, NumericVector gamma, NumericVector la
             }
           }
           g = (1 + delta * prod) * lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));
@@ -231,7 +231,7 @@ NumericMatrix covCdaC(NumericMatrix Gamma, NumericVector gamma, NumericVector la
             }
           }
           g = (1 + delta * prod) * lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));
@@ -523,7 +523,7 @@ NumericMatrix covCdaC2(NumericMatrix Gamma, NumericVector gamma, NumericVector l
           }
           z = z - delta * lambda(k) * prod;
           g = lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));
@@ -558,7 +558,7 @@ NumericMatrix covCdaC2(NumericMatrix Gamma, NumericVector gamma, NumericVector l
           }
           z = z - delta * lambda(k) * prod;
           g = lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));
@@ -590,7 +590,7 @@ NumericMatrix covCdaC2(NumericMatrix Gamma, NumericVector gamma, NumericVector l
           }
           z = z - delta * lambda(k) * prod;
           g = lambda(k);
-          beta(j, k) = softThresholdC(z, g) / (1 + delta * lambda(k) * R(j, j));
+          beta(j, k) = softThresholdC(z, g) / (Gamma(j, j) + delta * lambda(k) * R(j, j));
         }
       }
       resid = max(abs(beta(_, k) - beta_prev));

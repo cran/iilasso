@@ -146,7 +146,7 @@ cov_cda_r <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in which(candid2)) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k]
           g <- (1 + delta * R[j, -j] %*% abs(beta[-j, k])) * lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]
@@ -163,7 +163,7 @@ cov_cda_r <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in which(candid)) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k]
           g <- (1 + delta * R[j, -j] %*% abs(beta[-j, k])) * lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]
@@ -180,7 +180,7 @@ cov_cda_r <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in 1:p) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k]
           g <- (1 + delta * R[j, -j] %*% abs(beta[-j, k])) * lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]
@@ -483,7 +483,7 @@ cov_cda_r2 <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in which(candid2)) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k] - delta * R[j, -j] %*% beta[-j, k] * lambda[k]
           g <- lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]
@@ -500,7 +500,7 @@ cov_cda_r2 <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in which(candid)) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k] - delta * R[j, -j] %*% beta[-j, k] * lambda[k]
           g <- lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]
@@ -517,7 +517,7 @@ cov_cda_r2 <- function(Gamma, gamma, lambda, R, init.beta, delta,
         for (j in 1:p) {
           z <- gamma[j, ] - Gamma[j, -j] %*% beta[-j, k] - delta * R[j, -j] %*% beta[-j, k] * lambda[k]
           g <- lambda[k]
-          beta[j, k] <- soft_threshold(z, g) / (1 + delta * lambda[k] * R[j, j])
+          beta[j, k] <- soft_threshold(z, g) / (Gamma[j, j] + delta * lambda[k] * R[j, j])
         }
         residual <- max(abs(beta[, k] - beta_prev))
         beta_prev <- beta[, k]

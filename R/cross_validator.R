@@ -43,11 +43,16 @@ cv_lasso <- function(X, y, nfolds = 10,
                      lambda = NULL,
                      foldid = NULL,
                      unit = "sample",
-                     seed = 0,
-                     cl = NULL, 
+                     seed,
+                     cl, 
                      ...) {
-  if (is.null(foldid)) {
+  
+  if (!missing(seed)) {
     set.seed(seed)
+  }
+  
+  if (is.null(foldid)) {
+    # set.seed(seed)
     foldid <- sample(rep(1:nfolds, floor(nrow(X) / nfolds)), replace=FALSE)
     # foldid <- split(1:nrow(X), folds)
   }
@@ -65,7 +70,7 @@ cv_lasso <- function(X, y, nfolds = 10,
                                    by=log(lambda.min.ratio)/(nlambda-1)))
   }
   
-  if (is.null(cl)) {
+  if (missing(cl)) {
     cv_fit <- lapply(1:nfolds, function(i) {
       train_id <- which(foldid != i)
       test_id <- which(foldid == i)
